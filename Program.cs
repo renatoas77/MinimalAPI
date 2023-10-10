@@ -34,6 +34,8 @@ app.MapGet("Tarefa", async (AppDbContext context, int id) => await context.Taref
 
 app.MapGet("Tarefas", async (AppDbContext context) => await context.Tarefas.ToListAsync());
 
+app.MapGet("Tarefas/Concluidas", async (AppDbContext context) => await context.Tarefas.Where(t => t.IsConcluida).ToListAsync());
+
 app.MapPut("Tarefa", async (AppDbContext context, Tarefa tarefa, int id) =>
 {
     if(tarefa.Id != id)
